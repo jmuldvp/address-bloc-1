@@ -61,10 +61,25 @@ class MenuController
     puts "New AddressBloc Entry"
     print "Name: "
     name = gets.chomp
+
     print "Phone number: "
     phone = gets.chomp
+    while !(phone =~ /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/)
+      # system "clear"
+      puts "The phone number needs to follow one of these formats..\n"
+      puts "111 222 3333, (111) 222-3333, 111.222.3333, 111 222 3333\n"
+      print "Please re-enter your phone number: "
+      phone = gets.chomp
+    end
+
     print "Email: "
     email = gets.chomp
+    while !(email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
+      puts "The email address must follow this format...\n"
+      puts "abc@def.com, xyz@abc.org etc\n"
+      print "Please re-enter your email address: "
+      email = gets.chomp
+    end
 
     address_book.add_entry(name, phone, email)
 
