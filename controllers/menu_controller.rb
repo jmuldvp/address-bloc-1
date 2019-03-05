@@ -215,4 +215,9 @@ class MenuController
         search_submenu(entry)
     end
   end
+
+  def delete_entry(param)
+    param.destroy
+    puts "#{entry.name} has been deleted"
+  end
 end
